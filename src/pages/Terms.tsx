@@ -1,0 +1,628 @@
+export default function Terms() {
+  return (
+    <div className="container mx-auto px-4 py-16">
+      <div className="max-w-4xl mx-auto">
+        <h1 
+          className="text-4xl md:text-5xl font-bold mb-8"
+          style={{
+            color: '#F8F9FA',
+            fontWeight: '700',
+            letterSpacing: '-0.5px'
+          }}
+        >
+          Terms of Service
+        </h1>
+
+        <div 
+          className="backdrop-blur-sm rounded-2xl p-8 space-y-8"
+          style={{
+            backgroundColor: '#1A1B2E',
+            border: '1.5px solid #2A2B3E',
+          }}
+        >
+          <p 
+            className="text-sm"
+            style={{ color: '#8F92A1' }}
+          >
+            <strong>Last updated:</strong> {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+          </p>
+
+          {/* Introduction */}
+          <section>
+            <p 
+              className="leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              These Terms of Service ("Terms") govern your use of the ChartMasterAI mobile application 
+              ("the App," "we," "our," or "us"). By downloading, installing, or using the App, you agree 
+              to be bound by these Terms. If you do not agree, please do not use the App.
+            </p>
+          </section>
+
+          {/* 1. Acceptance of Terms */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              1. Acceptance of Terms
+            </h2>
+            <p 
+              className="leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              By accessing and using ChartMasterAI, you acknowledge that you have read, understood, and 
+              agree to be bound by these Terms and our Privacy Policy. These Terms constitute a legally 
+              binding agreement between you and ChartMasterAI.
+            </p>
+          </section>
+
+          {/* 2. Description of Service */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              2. Description of Service
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              ChartMasterAI provides the following services:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li><strong>AI-powered stock chart analysis:</strong> Upload stock charts for instant AI interpretation</li>
+              <li><strong>Market insights:</strong> Receive analysis on stocks, global markets, and trading patterns</li>
+              <li><strong>Educational content:</strong> Learn about technical analysis and market trends</li>
+              <li><strong>Real-time analysis:</strong> Get immediate responses powered by Google Gemini AI</li>
+            </ul>
+            <p 
+              className="mt-3 leading-relaxed"
+              style={{ color: '#8F92A1', fontSize: '14px', fontStyle: 'italic' }}
+            >
+              The service is provided "as is" for informational and educational purposes only.
+            </p>
+          </section>
+
+          {/* 3. NOT FINANCIAL ADVICE - CRITICAL DISCLAIMER */}
+          <section>
+            <div 
+              className="p-6 rounded-xl"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255, 193, 7, 0.2) 0%, rgba(255, 152, 0, 0.2) 100%)',
+                border: '2px solid rgba(255, 193, 7, 0.5)',
+              }}
+            >
+              <h2 
+                className="text-2xl font-bold mb-4"
+                style={{
+                  color: '#FFC107',
+                  fontWeight: '700',
+                  letterSpacing: '-0.3px'
+                }}
+              >
+                ⚠️ 3. NOT FINANCIAL ADVICE - CRITICAL DISCLAIMER
+              </h2>
+              
+              <p 
+                className="mb-4 leading-relaxed font-semibold"
+                style={{ color: '#FFE082', fontSize: '16px' }}
+              >
+                PLEASE READ THIS SECTION CAREFULLY:
+              </p>
+
+              <div className="space-y-3" style={{ color: '#FFF3E0', fontSize: '15px' }}>
+                <p className="leading-relaxed">
+                  <strong>ChartMasterAI DOES NOT provide financial, investment, or trading advice.</strong> 
+                  All analysis, predictions, insights, and recommendations generated by the App are:
+                </p>
+                
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li>Generated by artificial intelligence (Google Gemini AI)</li>
+                  <li>For <strong>educational and informational purposes only</strong></li>
+                  <li><strong>NOT</strong> personalized financial advice</li>
+                  <li><strong>NOT</strong> guaranteed to be accurate or profitable</li>
+                  <li>Subject to errors, misinterpretations, or technical limitations</li>
+                </ul>
+
+                <p className="leading-relaxed font-semibold mt-4">
+                  You acknowledge and agree that:
+                </p>
+
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li><strong>You use the App entirely at your own risk</strong></li>
+                  <li>You should <strong>never</strong> rely solely on AI-generated analysis for investment decisions</li>
+                  <li>You must <strong>always consult with a qualified, licensed financial advisor</strong> before making investment decisions</li>
+                  <li>Past performance does <strong>not</strong> guarantee future results</li>
+                  <li>Trading and investing involve substantial risk of financial loss</li>
+                  <li><strong>You could lose all or part of your investment</strong></li>
+                  <li>We are <strong>not responsible</strong> for any financial losses you may incur</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* 4. Eligibility */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              4. Eligibility
+            </h2>
+            <p 
+              className="leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              You must be at least <strong>18 years of age</strong> to use ChartMasterAI. By using the App, 
+              you represent and warrant that you meet this age requirement and have the legal capacity to 
+              enter into these Terms.
+            </p>
+          </section>
+
+          {/* 5. User Responsibilities */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              5. User Responsibilities
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              When using ChartMasterAI, you agree to:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li><strong>Use the App legally:</strong> Comply with all applicable local, state, national, and international laws</li>
+              <li><strong>Upload appropriate content:</strong> Only upload stock charts and legitimate market-related images</li>
+              <li><strong>Respect intellectual property:</strong> Not upload copyrighted or proprietary content without permission</li>
+              <li><strong>No misuse:</strong> Not attempt to hack, reverse engineer, or exploit the App for unauthorized purposes</li>
+              <li><strong>No abuse:</strong> Not use the App to spam, harass, or engage in illegal activities</li>
+              <li><strong>Personal responsibility:</strong> Take full responsibility for all trading and investment decisions you make</li>
+            </ul>
+          </section>
+
+          {/* 6. Prohibited Activities */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              6. Prohibited Activities
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              You may NOT:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li>Reverse engineer, decompile, or disassemble the App</li>
+              <li>Attempt to gain unauthorized access to our systems or other users' data</li>
+              <li>Use automated scripts, bots, or scrapers to access the App</li>
+              <li>Resell, redistribute, or commercially exploit the App without permission</li>
+              <li>Remove or modify any copyright, trademark, or proprietary notices</li>
+              <li>Use the App for market manipulation, fraud, or illegal trading activities</li>
+            </ul>
+          </section>
+
+          {/* 7. Intellectual Property */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              7. Intellectual Property Rights
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              All content, features, design, code, and functionality of ChartMasterAI (including but not limited 
+              to the app interface, logo, graphics, and AI analysis algorithms) are owned by ChartMasterAI 
+              developers and are protected by:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li>Copyright laws</li>
+              <li>Trademark laws</li>
+              <li>Intellectual property laws</li>
+            </ul>
+            <p 
+              className="mt-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              You are granted a limited, non-exclusive, non-transferable license to use the App for personal, 
+              non-commercial purposes only.
+            </p>
+          </section>
+
+          {/* 8. Subscription and Payments */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              8. Pricing and Payments
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              ChartMasterAI is currently <strong>free to use</strong>. However, we reserve the right to:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li>Introduce paid features or premium subscriptions in the future</li>
+              <li>Limit usage for free users (e.g., daily analysis limits)</li>
+              <li>Require payment for certain advanced features</li>
+            </ul>
+            <p 
+              className="mt-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              If paid subscriptions are introduced:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li>Pricing will be clearly displayed before purchase</li>
+              <li>Payments will be processed through Google Play Store or Apple App Store</li>
+              <li>Subscription fees are generally <strong>non-refundable</strong> unless required by law</li>
+              <li>You may cancel subscriptions at any time through your device's app store settings</li>
+              <li>Cancellations take effect at the end of the current billing period</li>
+            </ul>
+          </section>
+
+          {/* 9. AI-Generated Content Disclaimer */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              9. AI-Generated Content Disclaimer
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              All analysis provided by ChartMasterAI is generated by artificial intelligence (Google Gemini AI). 
+              You acknowledge that:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li><strong>AI is not infallible:</strong> AI can make errors, misinterpret data, or provide inaccurate analysis</li>
+              <li><strong>No guarantees:</strong> We do not guarantee the accuracy, completeness, or reliability of AI-generated content</li>
+              <li><strong>Market volatility:</strong> Stock markets are unpredictable, and AI predictions may not account for sudden events</li>
+              <li><strong>Technical limitations:</strong> AI analysis is based on visual chart patterns and may miss fundamental factors</li>
+              <li><strong>Not a substitute:</strong> AI analysis should complement, not replace, professional financial advice</li>
+            </ul>
+          </section>
+
+          {/* 10. Limitation of Liability */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              10. Limitation of Liability
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed font-semibold"
+              style={{ color: '#FFC107', fontSize: '15px' }}
+            >
+              IMPORTANT: PLEASE READ THIS SECTION CAREFULLY.
+            </p>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              To the maximum extent permitted by law, ChartMasterAI and its developers, owners, employees, 
+              and affiliates shall <strong>NOT</strong> be liable for any:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li><strong>Financial losses:</strong> Including losses from trading, investments, or financial decisions based on the App</li>
+              <li><strong>Direct damages:</strong> Any direct damages resulting from use or inability to use the App</li>
+              <li><strong>Indirect damages:</strong> Lost profits, lost data, business interruption, or consequential damages</li>
+              <li><strong>Incidental damages:</strong> Any incidental, special, exemplary, or punitive damages</li>
+              <li><strong>AI errors:</strong> Damages resulting from incorrect, incomplete, or misleading AI analysis</li>
+              <li><strong>Third-party services:</strong> Issues caused by Google Gemini AI or other third-party services</li>
+              <li><strong>Technical issues:</strong> App crashes, bugs, downtime, or data loss</li>
+            </ul>
+            <p 
+              className="mt-4 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              <strong>Your use of ChartMasterAI is entirely at your own risk.</strong> The App is provided 
+              "as is" and "as available" without warranties of any kind, either express or implied.
+            </p>
+          </section>
+
+          {/* 11. Disclaimer of Warranties */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              11. Disclaimer of Warranties
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              We make <strong>no warranties or representations</strong> about:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li>The accuracy, reliability, or completeness of the App's content or analysis</li>
+              <li>The App's availability, uptime, or uninterrupted operation</li>
+              <li>The App being free from errors, bugs, viruses, or security vulnerabilities</li>
+              <li>Results you may achieve from using the App</li>
+              <li>The App meeting your specific requirements or expectations</li>
+            </ul>
+          </section>
+
+          {/* 12. Indemnification */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              12. Indemnification
+            </h2>
+            <p 
+              className="leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              You agree to indemnify, defend, and hold harmless ChartMasterAI and its developers from any 
+              claims, damages, losses, liabilities, and expenses (including legal fees) arising from:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4 mt-3" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li>Your use or misuse of the App</li>
+              <li>Your violation of these Terms</li>
+              <li>Your violation of any laws or regulations</li>
+              <li>Your financial or investment decisions</li>
+              <li>Content you upload to the App</li>
+            </ul>
+          </section>
+
+          {/* 13. Termination */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              13. Termination
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              We reserve the right to suspend, restrict, or terminate your access to the App at any time, 
+              with or without notice, for any reason, including but not limited to:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li>Violation of these Terms</li>
+              <li>Fraudulent or illegal activity</li>
+              <li>Abuse or misuse of the App</li>
+              <li>Non-payment of fees (if applicable)</li>
+              <li>Any reason at our sole discretion</li>
+            </ul>
+            <p 
+              className="mt-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              You may stop using the App at any time by uninstalling it from your device.
+            </p>
+          </section>
+
+          {/* 14. Changes to the App and Terms */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              14. Changes to the App and Terms
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              We reserve the right to:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li><strong>Modify these Terms:</strong> We may update these Terms at any time by posting the revised version</li>
+              <li><strong>Update the App:</strong> Add, remove, or change features, functionality, or design</li>
+              <li><strong>Discontinue the App:</strong> We may shut down the App permanently at any time</li>
+            </ul>
+            <p 
+              className="mt-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              Continued use of the App after changes constitutes your acceptance of the new Terms.
+            </p>
+          </section>
+
+          {/* 15. Governing Law and Jurisdiction */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              15. Governing Law and Jurisdiction
+            </h2>
+            <p 
+              className="leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              These Terms shall be governed by and construed in accordance with the laws of <strong>India</strong>, 
+              without regard to its conflict of law principles. Any disputes arising from these Terms or your 
+              use of the App shall be subject to the exclusive jurisdiction of the courts located in{' '}
+              <strong>[Your City/State, India]</strong>.
+            </p>
+          </section>
+
+          {/* 16. Severability */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              16. Severability
+            </h2>
+            <p 
+              className="leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              If any provision of these Terms is found to be invalid, illegal, or unenforceable, the remaining 
+              provisions shall continue in full force and effect.
+            </p>
+          </section>
+
+          {/* 17. Entire Agreement */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              17. Entire Agreement
+            </h2>
+            <p 
+              className="leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              These Terms, together with our Privacy Policy, constitute the entire agreement between you 
+              and ChartMasterAI regarding your use of the App, and supersede any prior agreements or understandings.
+            </p>
+          </section>
+
+          {/* 18. Contact Us */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              18. Contact Us
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              If you have questions, concerns, or feedback about these Terms of Service, please contact us:
+            </p>
+            <div 
+              className="p-4 rounded-lg"
+              style={{
+                backgroundColor: 'rgba(108, 62, 255, 0.1)',
+                border: '1.5px solid rgba(108, 62, 255, 0.3)',
+              }}
+            >
+              <p style={{ color: '#C5C7D0', fontSize: '15px' }}>
+                <strong>Email:</strong>{' '}
+                <a 
+                  href="mailto:narisnarender@gmail.com"
+                  className="hover:underline"
+                  style={{ color: '#6C3EFF' }}
+                >
+                  narisnarender@gmail.com
+                </a>
+              </p>
+              <p style={{ color: '#C5C7D0', fontSize: '15px' }} className="mt-2">
+                <strong>Response Time:</strong> We aim to respond within 48 hours
+              </p>
+            </div>
+          </section>
+
+          {/* Acknowledgment Box */}
+          <div 
+            className="p-6 rounded-xl mt-8"
+            style={{
+              background: 'linear-gradient(135deg, rgba(108, 62, 255, 0.2) 0%, rgba(90, 47, 230, 0.2) 100%)',
+              border: '1.5px solid rgba(108, 62, 255, 0.4)',
+            }}
+          >
+            <h3 
+              className="text-xl font-bold mb-3"
+              style={{ color: '#F8F9FA' }}
+            >
+              ✅ By Using ChartMasterAI, You Acknowledge That:
+            </h3>
+            <ul className="space-y-2" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li>✅ You have read and understood these Terms of Service</li>
+              <li>✅ You agree to be bound by these Terms</li>
+              <li>✅ You understand that ChartMasterAI does NOT provide financial advice</li>
+              <li>✅ You use the App entirely at your own risk</li>
+              <li>✅ You are solely responsible for your investment decisions</li>
+              <li>✅ You will not hold ChartMasterAI liable for any financial losses</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
