@@ -235,14 +235,39 @@ export default function Privacy() {
                   className="font-bold mb-2"
                   style={{ color: '#F8F9FA', fontSize: '16px' }}
                 >
-                  Google AdMob (If Ads Are Enabled)
+                  Google AdMob (Advertising)
                 </h3>
+                <p 
+                  className="leading-relaxed mb-2"
+                  style={{ color: '#C5C7D0', fontSize: '14px' }}
+                >
+                  The app displays advertisements via Google AdMob. AdMob may collect:
+                </p>
+                <ul 
+                  className="space-y-1 ml-6 mb-2"
+                  style={{ 
+                    color: '#C5C7D0', 
+                    fontSize: '14px',
+                    listStyleType: 'disc'
+                  }}
+                >
+                  <li>Device identifiers (Advertising ID)</li>
+                  <li>Ad interaction data (clicks, impressions)</li>
+                  <li>Approximate location (for ad targeting)</li>
+                  <li>Device information (model, OS version)</li>
+                </ul>
+                <p 
+                  className="leading-relaxed mb-2"
+                  style={{ color: '#C5C7D0', fontSize: '14px' }}
+                >
+                  <strong style={{ color: '#F8F9FA' }}>For EU/UK/EEA users:</strong> We use Google's 
+                  User Messaging Platform (UMP) to obtain your consent for personalized ads and data collection. 
+                  You can change your consent preferences at any time in the app settings.
+                </p>
                 <p 
                   className="leading-relaxed"
                   style={{ color: '#C5C7D0', fontSize: '14px' }}
                 >
-                  If the app displays advertisements, Google AdMob may collect device identifiers 
-                  (like Advertising ID), ad interaction data, and approximate location for ad targeting. 
                   You can opt-out of personalized ads in your device settings. 
                   AdMob Privacy Policy: <a 
                     href="https://support.google.com/admob/answer/6128543" 
@@ -402,6 +427,88 @@ export default function Privacy() {
                 <strong style={{ color: '#F8F9FA' }}>Stop Using the Service:</strong> You can stop using 
                 ChartMasterAI at any time by uninstalling the app.
               </li>
+            </ul>
+          </section>
+
+          {/* 8b. GDPR Rights - NEW */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              8b. GDPR Rights (For European Users)
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              If you are located in the European Economic Area (EEA), United Kingdom, or Switzerland, you have the following rights:
+            </p>
+            <ul 
+              className="space-y-2 ml-6"
+              style={{ 
+                color: '#C5C7D0', 
+                fontSize: '15px',
+                listStyleType: 'disc',
+                listStylePosition: 'outside'
+              }}
+            >
+              <li><strong style={{ color: '#F8F9FA' }}>Right to Access:</strong> Request a copy of your data (though we don't store personal data)</li>
+              <li><strong style={{ color: '#F8F9FA' }}>Right to Rectification:</strong> Correct inaccurate data</li>
+              <li><strong style={{ color: '#F8F9FA' }}>Right to Erasure:</strong> Request deletion (uninstall the app)</li>
+              <li><strong style={{ color: '#F8F9FA' }}>Right to Restrict Processing:</strong> Limit how we process your data</li>
+              <li><strong style={{ color: '#F8F9FA' }}>Right to Data Portability:</strong> Receive your data in a structured format</li>
+              <li><strong style={{ color: '#F8F9FA' }}>Right to Object:</strong> Object to data processing for marketing purposes</li>
+              <li><strong style={{ color: '#F8F9FA' }}>Right to Withdraw Consent:</strong> Withdraw consent for data collection at any time</li>
+            </ul>
+            <p 
+              className="mt-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              To exercise these rights, contact us at <a 
+                href="mailto:narisnarender@gmail.com" 
+                style={{ color: '#6C3EFF', textDecoration: 'underline' }}
+              >
+                narisnarender@gmail.com
+              </a>
+            </p>
+          </section>
+
+          {/* 8c. California Privacy Rights - NEW */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              8c. California Privacy Rights (CCPA)
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              California residents have the right to:
+            </p>
+            <ul 
+              className="space-y-2 ml-6"
+              style={{ 
+                color: '#C5C7D0', 
+                fontSize: '15px',
+                listStyleType: 'disc',
+                listStylePosition: 'outside'
+              }}
+            >
+              <li>Know what personal information we collect (disclosed in this policy)</li>
+              <li>Request deletion of personal information</li>
+              <li>Opt-out of the sale of personal information (we do NOT sell your data)</li>
+              <li>Non-discrimination for exercising privacy rights</li>
             </ul>
           </section>
 
