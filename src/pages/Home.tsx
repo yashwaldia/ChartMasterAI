@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { IoSparkles, IoTrendingUp, IoGlobeOutline, IoBarChart, IoFlash, IoBriefcase, IoSchool, IoNotifications, IoPhonePortrait, IoDownloadOutline, IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import logo from '../assets/logo.png';
-import img1 from '../assets/1.jpeg';
-import img2 from '../assets/2.jpeg';
-import img3 from '../assets/3.jpeg';
-import img4 from '../assets/4.jpeg';
+import img1 from '../assets/1.png';
+import img2 from '../assets/2.png';
+import img3 from '../assets/3.png';
+import img4 from '../assets/4.png';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
