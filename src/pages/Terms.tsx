@@ -24,6 +24,7 @@ export default function Terms() {
             className="text-sm"
             style={{ color: '#8F92A1' }}
           >
+            <strong>Effective Date:</strong> December 7, 2025<br/>
             <strong>Last updated:</strong> {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
           </p>
 
@@ -84,6 +85,7 @@ export default function Terms() {
               <li><strong>Market insights:</strong> Receive analysis on stocks, global markets, and trading patterns</li>
               <li><strong>Educational content:</strong> Learn about technical analysis and market trends</li>
               <li><strong>Real-time analysis:</strong> Get immediate responses powered by Google Gemini AI</li>
+              <li><strong>Advertising:</strong> The app may display advertisements via Google AdMob</li>
             </ul>
             <p 
               className="mt-3 leading-relaxed"
@@ -169,7 +171,7 @@ export default function Terms() {
             >
               You must be at least <strong>18 years of age</strong> to use ChartMasterAI. By using the App, 
               you represent and warrant that you meet this age requirement and have the legal capacity to 
-              enter into these Terms.
+              enter into these Terms. The App is not intended for children under 13 years of age.
             </p>
           </section>
 
@@ -226,6 +228,8 @@ export default function Terms() {
               <li>Resell, redistribute, or commercially exploit the App without permission</li>
               <li>Remove or modify any copyright, trademark, or proprietary notices</li>
               <li>Use the App for market manipulation, fraud, or illegal trading activities</li>
+              <li>Interfere with or disrupt the App's functionality or servers</li>
+              <li>Click on ads fraudulently or attempt to manipulate ad revenue</li>
             </ul>
           </section>
 
@@ -260,6 +264,45 @@ export default function Terms() {
             >
               You are granted a limited, non-exclusive, non-transferable license to use the App for personal, 
               non-commercial purposes only.
+            </p>
+          </section>
+
+          {/* 7b. Third-Party Services - NEW */}
+          <section>
+            <h2 
+              className="text-2xl font-bold mb-4"
+              style={{
+                color: '#F8F9FA',
+                fontWeight: '700',
+                letterSpacing: '-0.3px'
+              }}
+            >
+              7b. Third-Party Services and Advertising
+            </h2>
+            <p 
+              className="mb-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              ChartMasterAI uses third-party services, including:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4" style={{ color: '#C5C7D0', fontSize: '15px' }}>
+              <li><strong>Google Gemini AI:</strong> For AI-powered chart analysis</li>
+              <li><strong>Google AdMob:</strong> For displaying advertisements</li>
+              <li><strong>Expo:</strong> For app framework and diagnostics</li>
+            </ul>
+            <p 
+              className="mt-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              By using the App, you agree to the terms and privacy policies of these third-party services. 
+              We display ads via Google AdMob, which may collect device identifiers, ad interaction data, 
+              and approximate location. You can manage ad preferences in your device settings.
+            </p>
+            <p 
+              className="mt-3 leading-relaxed"
+              style={{ color: '#C5C7D0', fontSize: '15px' }}
+            >
+              We are not responsible for the content, accuracy, or practices of third-party services or advertisements.
             </p>
           </section>
 
@@ -360,8 +403,9 @@ export default function Terms() {
               <li><strong>Indirect damages:</strong> Lost profits, lost data, business interruption, or consequential damages</li>
               <li><strong>Incidental damages:</strong> Any incidental, special, exemplary, or punitive damages</li>
               <li><strong>AI errors:</strong> Damages resulting from incorrect, incomplete, or misleading AI analysis</li>
-              <li><strong>Third-party services:</strong> Issues caused by Google Gemini AI or other third-party services</li>
+              <li><strong>Third-party services:</strong> Issues caused by Google Gemini AI, Google AdMob, or other third-party services</li>
               <li><strong>Technical issues:</strong> App crashes, bugs, downtime, or data loss</li>
+              <li><strong>Advertising content:</strong> Any third-party advertisements displayed in the App</li>
             </ul>
             <p 
               className="mt-4 leading-relaxed"
@@ -510,8 +554,7 @@ export default function Terms() {
             >
               These Terms shall be governed by and construed in accordance with the laws of <strong>India</strong>, 
               without regard to its conflict of law principles. Any disputes arising from these Terms or your 
-              use of the App shall be subject to the exclusive jurisdiction of the courts located in{' '}
-              <strong>[Your City/State, India]</strong>.
+              use of the App shall be subject to the exclusive jurisdiction of the courts located in India.
             </p>
           </section>
 
