@@ -1,6 +1,23 @@
 import { useState, useEffect } from 'react';
-import { IoSparkles, IoTrendingUp, IoGlobeOutline, IoBarChart, IoFlash, IoBriefcase, IoSchool, IoNotifications, IoPhonePortrait, IoDownloadOutline, IoChevronBack, IoChevronForward } from 'react-icons/io5';
-import logo from '../assets/logo.png';
+import { 
+  IoSparkles, 
+  IoTrendingUp, 
+  IoGlobeOutline, 
+  IoBarChart, 
+  IoFlash, 
+  IoBriefcase, 
+  IoSchool, 
+  IoNotifications, 
+  IoPhonePortrait, 
+  IoDownloadOutline, 
+  IoChevronForward,
+  IoCheckmarkCircle,
+  IoShieldCheckmark,
+  IoAnalytics,
+  IoRocket,
+  IoTimeOutline,
+  IoServerOutline
+} from 'react-icons/io5';
 import img1 from '../assets/1.png';
 import img2 from '../assets/2.png';
 import img3 from '../assets/3.png';
@@ -16,335 +33,398 @@ export default function Home() {
       setCurrentSlide((prev) => (prev + 1) % images.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % images.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      {/* Hero Section */}
-      <div className="text-center mb-20">
-        <div className="inline-block mb-6">
-          <img 
-            src={logo} 
-            alt="ChartMasterAI Logo" 
-            className="w-28 h-28 rounded-2xl mx-auto"
+    <div className="overflow-hidden">
+      {/* Hero Section - Split Layout */}
+      <section className="relative min-h-[90vh] flex items-center">
+        {/* Background Gradient Mesh */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div 
+            className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl opacity-20"
             style={{
-              boxShadow: '0 12px 40px rgba(108, 62, 255, 0.4)'
+              background: 'radial-gradient(circle, #8B5CFF 0%, transparent 70%)',
+            }}
+          />
+          <div 
+            className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-3xl opacity-15"
+            style={{
+              background: 'radial-gradient(circle, #5A2FE6 0%, transparent 70%)',
             }}
           />
         </div>
-        <h1 
-          className="text-6xl md:text-7xl font-bold mb-6"
-          style={{
-            color: '#F8F9FA',
-            fontWeight: '700',
-            letterSpacing: '-0.5px',
-            lineHeight: '1.1'
-          }}
-        >
-          ChartMasterAI
-        </h1>
-        <p 
-          className="text-2xl mb-10 max-w-3xl mx-auto"
-          style={{
-            color: '#8F92A1',
-            fontSize: '22px',
-            fontWeight: '500',
-            lineHeight: '1.6'
-          }}
-        >
-          AI-powered stock analysis. Instantly.
-        </p>
-        
-        {/* BIG Hero CTA Button */}
-        <a
-          href="#download"
-          className="inline-flex items-center justify-center space-x-3 px-12 py-5 rounded-2xl text-xl font-bold transition-all duration-200"
-          style={{
-            background: 'linear-gradient(135deg, #8B5CFF 0%, #5A2FE6 100%)',
-            color: '#FFFFFF',
-            fontWeight: '700',
-            letterSpacing: '-0.3px',
-            fontSize: '20px',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #7B4AFF 0%, #6C3EFF 100%)';
-            e.currentTarget.style.transform = 'translateY(-3px)';
-            e.currentTarget.style.boxShadow = '0 12px 32px rgba(108, 62, 255, 0.6)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #8B5CFF 0%, #5A2FE6 100%)';
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = 'none';
-          }}
-        >
-          <IoDownloadOutline size={28} />
-          <span>Download on Google Play</span>
-        </a>
-      </div>
 
-      {/* Carousel Section - FIXED */}
-      <div className="mb-20 relative">
-        <div 
-          className="relative rounded-3xl overflow-hidden"
-          style={{
-            backgroundColor: '#0A0B1A',
-            border: '1.5px solid #2A2B3E',
-            minHeight: '450px',
-          }}
-        >
-          {/* Carousel Images */}
-          <div className="relative w-full h-full flex items-center justify-center" style={{ minHeight: '450px' }}>
-            {images.map((img, idx) => (
-              <div
-                key={idx}
-                className="absolute top-0 left-0 w-full h-full transition-opacity duration-500 flex items-center justify-center p-4"
-                style={{
-                  opacity: currentSlide === idx ? 1 : 0,
-                  pointerEvents: currentSlide === idx ? 'auto' : 'none',
-                }}
-              >
-                <img
-                  src={img}
-                  alt={`ChartMasterAI Promo ${idx + 1}`}
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: '450px',
-                    width: 'auto',
-                    height: 'auto',
-                    objectFit: 'contain',
+        <div className="container mx-auto px-4 py-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-8 animate-fade-in-up">
+              {/* Main Headline - NO LOGO HERE */}
+              <div>
+                <h1 
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+                  style={{ letterSpacing: '-0.02em' }}
+                >
+                  <span className="text-offWhite">Trade Smarter</span>
+                  <br />
+                  <span className="text-offWhite">with </span>
+                  <span className="gradient-text">AI-Powered</span>
+                  <br />
+                  <span className="text-offWhite">Insights</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-xl leading-relaxed">
+                  Get instant, intelligent stock analysis powered by advanced AI. 
+                  Make confident trading decisions in seconds, not hours.
+                </p>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://play.google.com/store"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-purple-glow inline-flex items-center justify-center gap-3 text-lg px-8 py-4 group"
+                >
+                  <IoDownloadOutline size={24} />
+                  <span>Download Free</span>
+                  <span className="transition-transform group-hover:translate-x-1">
+                    <IoChevronForward size={20} />
+                  </span>
+                </a>
+                <button
+                  onClick={() => {
+                    const featuresSection = document.getElementById('features');
+                    if (featuresSection) {
+                      featuresSection.scrollIntoView({ behavior: 'smooth' });
+                    }
                   }}
-                />
+                  className="btn-outline-purple inline-flex items-center justify-center gap-2 text-lg px-8 py-4"
+                >
+                  <IoSparkles size={20} />
+                  <span>Explore Features</span>
+                </button>
               </div>
-            ))}
-          </div>
 
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 z-10"
-            style={{
-              backgroundColor: 'rgba(26, 27, 46, 0.95)',
-              border: '1.5px solid #6C3EFF',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#6C3EFF';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(26, 27, 46, 0.95)';
-            }}
-          >
-            <IoChevronBack size={24} color="#F8F9FA" />
-          </button>
-          
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 z-10"
-            style={{
-              backgroundColor: 'rgba(26, 27, 46, 0.95)',
-              border: '1.5px solid #6C3EFF',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#6C3EFF';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(26, 27, 46, 0.95)';
-            }}
-          >
-            <IoChevronForward size={24} color="#F8F9FA" />
-          </button>
-        </div>
-
-        {/* Dots Indicator */}
-        <div className="flex items-center justify-center gap-3 mt-6">
-          {images.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrentSlide(idx)}
-              className="transition-all duration-300"
-              style={{
-                width: currentSlide === idx ? '32px' : '12px',
-                height: '12px',
-                borderRadius: '6px',
-                backgroundColor: currentSlide === idx ? '#6C3EFF' : '#2A2B3E',
-                border: currentSlide === idx ? 'none' : '1.5px solid #2A2B3E',
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Features Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-        {[
-          {
-            icon: <IoSparkles size={48} color="#6C3EFF" />,
-            title: 'AI-Powered Analysis',
-            description: 'Get instant insights powered by advanced AI technology for smarter trading decisions.'
-          },
-          {
-            icon: <IoTrendingUp size={48} color="#6C3EFF" />,
-            title: 'Real-Time Data',
-            description: 'Access real-time stock prices and market trends from global exchanges.'
-          },
-          {
-            icon: <IoGlobeOutline size={48} color="#6C3EFF" />,
-            title: 'Global Coverage',
-            description: 'Track stocks and markets from India, US, Europe, and Asia all in one place.'
-          }
-        ].map((feature, idx) => (
-          <div 
-            key={idx}
-            className="backdrop-blur-sm rounded-2xl p-8 transition-all duration-300 hover:scale-105"
-            style={{
-              backgroundColor: '#1A1B2E',
-              border: '1.5px solid #2A2B3E',
-            }}
-          >
-            <div className="mb-5">{feature.icon}</div>
-            <h3 
-              className="text-xl font-bold mb-3"
-              style={{
-                color: '#F8F9FA',
-                fontWeight: '700',
-                letterSpacing: '-0.3px'
-              }}
-            >
-              {feature.title}
-            </h3>
-            <p 
-              style={{
-                color: '#8F92A1',
-                fontSize: '15px',
-                fontWeight: '500',
-                lineHeight: '1.6'
-              }}
-            >
-              {feature.description}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      {/* Powerful Features */}
-      <div 
-        className="backdrop-blur-sm rounded-2xl p-12 mb-20"
-        style={{
-          backgroundColor: '#1A1B2E',
-          border: '1.5px solid #2A2B3E',
-        }}
-      >
-        <h2 
-          className="text-4xl font-bold mb-10 text-center"
-          style={{
-            color: '#F8F9FA',
-            fontWeight: '700',
-            letterSpacing: '-0.4px'
-          }}
-        >
-          Powerful Features
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            { icon: <IoBarChart size={20} color="#6C3EFF" />, text: 'Advanced chart analysis' },
-            { icon: <IoSparkles size={20} color="#6C3EFF" />, text: 'AI-driven predictions' },
-            { icon: <IoPhonePortrait size={20} color="#6C3EFF" />, text: 'Clean, intuitive interface' },
-            { icon: <IoFlash size={20} color="#6C3EFF" />, text: 'Lightning-fast performance' },
-            { icon: <IoNotifications size={20} color="#6C3EFF" />, text: 'Real-time alerts' },
-            { icon: <IoTrendingUp size={20} color="#6C3EFF" />, text: 'Multiple timeframes' },
-            { icon: <IoBriefcase size={20} color="#6C3EFF" />, text: 'Portfolio tracking' },
-            { icon: <IoSchool size={20} color="#6C3EFF" />, text: 'Educational resources' }
-          ].map((feature, idx) => (
-            <div key={idx} className="flex items-center space-x-4">
-              <div 
-                className="flex items-center justify-center rounded-lg"
-                style={{
-                  backgroundColor: 'rgba(108, 62, 255, 0.15)',
-                  padding: '10px',
-                  border: '1.5px solid rgba(108, 62, 255, 0.3)',
-                  minWidth: '44px',
-                  minHeight: '44px'
-                }}
-              >
-                {feature.icon}
+              {/* Trust Indicators - GENUINE DATA ONLY */}
+              <div className="flex flex-wrap items-center gap-6 pt-4">
+                <div className="flex items-center gap-2">
+                  <div style={{ color: '#8B5CFF' }}>
+                    <IoSparkles size={24} />
+                  </div>
+                  <span className="text-gray-400 font-semibold">Powered by Gemini AI</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div style={{ color: '#10B981' }}>
+                    <IoShieldCheckmark size={24} />
+                  </div>
+                  <span className="text-gray-400 font-semibold">100% Free Access</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div style={{ color: '#F59E0B' }}>
+                    <IoTimeOutline size={24} />
+                  </div>
+                  <span className="text-gray-400 font-semibold">Real-Time Data</span>
+                </div>
               </div>
-              <span 
-                style={{
-                  color: '#8F92A1',
-                  fontSize: '16px',
-                  fontWeight: '500'
-                }}
-              >
-                {feature.text}
-              </span>
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/* CTA Section - Text Left, Button Right */}
-      <div 
-        className="backdrop-blur-sm rounded-2xl p-10"
-        style={{
-          background: 'linear-gradient(135deg, rgba(108, 62, 255, 0.15) 0%, rgba(90, 47, 230, 0.15) 100%)',
-          border: '1.5px solid rgba(108, 62, 255, 0.3)',
-        }}
-      >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Left Side - Text */}
-          <div className="flex-1">
-            <h2 
-              className="text-3xl font-bold mb-3"
-              style={{
-                color: '#F8F9FA',
-                fontWeight: '700',
-                letterSpacing: '-0.4px'
-              }}
-            >
-              Ready to elevate your trading?
+            {/* Right - App Preview */}
+            <div className="relative animate-fade-in-up animation-delay-400">
+              <div className="relative">
+                {/* Phone Mockup with Screenshot */}
+                <div 
+                  className="relative rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-md"
+                  style={{
+                    background: 'linear-gradient(135deg, #13151F 0%, #1A1B2E 100%)',
+                    border: '2px solid rgba(139, 92, 255, 0.3)',
+                  }}
+                >
+                  {/* Carousel */}
+                  <div className="relative h-[500px] sm:h-[600px]">
+                    {images.map((img, idx) => (
+                      <div
+                        key={idx}
+                        className="absolute inset-0 transition-all duration-700 flex items-center justify-center p-4"
+                        style={{
+                          opacity: currentSlide === idx ? 1 : 0,
+                          transform: currentSlide === idx ? 'scale(1)' : 'scale(0.95)',
+                        }}
+                      >
+                        <img
+                          src={img}
+                          alt={`ChartMasterAI Screenshot ${idx + 1}`}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Carousel Dots */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentSlide(idx)}
+                        className="transition-all duration-300"
+                        style={{
+                          width: currentSlide === idx ? '24px' : '8px',
+                          height: '8px',
+                          borderRadius: '4px',
+                          backgroundColor: currentSlide === idx ? '#8B5CFF' : 'rgba(255,255,255,0.3)',
+                        }}
+                        aria-label={`Go to slide ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Floating Feature Cards */}
+                <div className="hidden lg:block">
+                  <div 
+                    className="absolute -left-8 top-20 glass-card p-4 animate-float"
+                    style={{ width: '200px' }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div style={{ color: '#10B981' }}>
+                        <IoCheckmarkCircle size={24} />
+                      </div>
+                      <div>
+                        <p className="text-offWhite font-semibold text-sm">Buy Signal</p>
+                        <p className="text-gray-400 text-xs">Strong uptrend</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div 
+                    className="absolute -right-8 bottom-32 glass-card p-4 animate-float animation-delay-400"
+                    style={{ width: '180px' }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div style={{ color: '#8B5CFF' }}>
+                        <IoAnalytics size={24} />
+                      </div>
+                      <div>
+                        <p className="text-offWhite font-semibold text-sm">AI Analysis</p>
+                        <p className="text-gray-400 text-xs">Instant insights</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section - GENUINE METRICS ONLY */}
+      <section className="py-16 border-y border-borderDark bg-darkBgSecondary">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center animate-fade-in-up">
+              <div className="flex justify-center mb-3" style={{ color: '#8B5CFF' }}>
+                <IoGlobeOutline size={32} />
+              </div>
+              <div className="text-4xl font-bold text-offWhite mb-2">50+</div>
+              <div className="text-gray-400 font-medium">Markets Covered</div>
+            </div>
+            
+            <div className="text-center animate-fade-in-up animation-delay-200">
+              <div className="flex justify-center mb-3" style={{ color: '#10B981' }}>
+                <IoSparkles size={32} />
+              </div>
+              <div className="text-4xl font-bold text-offWhite mb-2">AI</div>
+              <div className="text-gray-400 font-medium">Powered Analysis</div>
+            </div>
+            
+            <div className="text-center animate-fade-in-up animation-delay-400">
+              <div className="flex justify-center mb-3" style={{ color: '#F59E0B' }}>
+                <IoTimeOutline size={32} />
+              </div>
+              <div className="text-4xl font-bold text-offWhite mb-2">&lt;3s</div>
+              <div className="text-gray-400 font-medium">Response Time</div>
+            </div>
+            
+            <div className="text-center animate-fade-in-up animation-delay-600">
+              <div className="flex justify-center mb-3" style={{ color: '#EC4899' }}>
+                <IoServerOutline size={32} />
+              </div>
+              <div className="text-4xl font-bold text-offWhite mb-2">24/7</div>
+              <div className="text-gray-400 font-medium">Live Data Feed</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bento Grid Features Section */}
+      <section id="features" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-offWhite mb-4">
+              Everything You Need to Trade Smart
             </h2>
-            <p 
-              style={{
-                color: '#8F92A1',
-                fontSize: '16px',
-                fontWeight: '500',
-                lineHeight: '1.6'
-              }}
-            >
-              Join thousands of traders using ChartMasterAI for smarter investment decisions.
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Powerful AI-driven features designed to give you the edge in the market
             </p>
           </div>
 
-          {/* Right Side - SMALLER Download Button */}
-          <a
-            href="#download"
-            className="inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200"
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Large Feature 1 */}
+            <div className="md:col-span-2 glass-card p-8 card-hover animate-fade-in-up">
+              <div className="flex flex-col h-full">
+                <div style={{ color: '#8B5CFF' }} className="mb-4">
+                  <IoSparkles size={48} />
+                </div>
+                <h3 className="text-2xl font-bold text-offWhite mb-3">
+                  AI-Powered Analysis
+                </h3>
+                <p className="text-gray-400 mb-6 flex-grow">
+                  Advanced machine learning algorithms analyze millions of data points to provide 
+                  you with actionable insights in real-time. Get buy/sell recommendations backed by AI.
+                </p>
+                <div className="flex items-center gap-2 text-purple-400 font-semibold">
+                </div>
+              </div>
+            </div>
+
+            {/* Medium Feature */}
+            <div className="glass-card p-8 card-hover animate-fade-in-up animation-delay-200">
+              <div style={{ color: '#10B981' }} className="mb-4">
+                <IoTrendingUp size={40} />
+              </div>
+              <h3 className="text-xl font-bold text-offWhite mb-3">
+                Real-Time Data
+              </h3>
+              <p className="text-gray-400">
+                Live market data from global exchanges updated every second.
+              </p>
+            </div>
+
+            {/* Medium Feature */}
+            <div className="glass-card p-8 card-hover animate-fade-in-up animation-delay-400">
+              <div style={{ color: '#F59E0B' }} className="mb-4">
+                <IoNotifications size={40} />
+              </div>
+              <h3 className="text-xl font-bold text-offWhite mb-3">
+                Smart Alerts
+              </h3>
+              <p className="text-gray-400">
+                Get notified instantly when AI detects trading opportunities.
+              </p>
+            </div>
+
+            {/* Large Feature 2 */}
+            <div className="md:col-span-2 glass-card p-8 card-hover animate-fade-in-up animation-delay-600">
+              <div className="flex flex-col h-full">
+                <div style={{ color: '#8B5CFF' }} className="mb-4">
+                  <IoGlobeOutline size={48} />
+                </div>
+                <h3 className="text-2xl font-bold text-offWhite mb-3">
+                  Global Market Coverage
+                </h3>
+                <p className="text-gray-400 mb-6 flex-grow">
+                  Track stocks from India (NSE, BSE), US (NASDAQ, NYSE), Europe, and Asian markets. 
+                  All in one powerful platform with unified analysis.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {['NSE', 'BSE', 'NASDAQ', 'NYSE'].map((market) => (
+                    <span 
+                      key={market}
+                      className="px-4 py-2 rounded-lg text-sm font-semibold"
+                      style={{
+                        background: 'rgba(139, 92, 255, 0.1)',
+                        border: '1px solid rgba(139, 92, 255, 0.3)',
+                        color: '#8B5CFF'
+                      }}
+                    >
+                      {market}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Detailed Features List */}
+      <section className="py-20 bg-darkBgSecondary">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-offWhite mb-12 text-center">
+              Built for Modern Traders
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { icon: <IoBarChart size={24} />, text: 'Advanced chart patterns', color: '#8B5CFF' },
+                { icon: <IoFlash size={24} />, text: 'Lightning-fast performance', color: '#F59E0B' },
+                { icon: <IoPhonePortrait size={24} />, text: 'Beautiful, intuitive UI', color: '#10B981' },
+                { icon: <IoBriefcase size={24} />, text: 'Portfolio tracking & management', color: '#8B5CFF' },
+                { icon: <IoRocket size={24} />, text: 'Entry/exit suggestions', color: '#EC4899' },
+                { icon: <IoSchool size={24} />, text: 'Educational resources', color: '#3B82F6' },
+              ].map((feature, idx) => (
+                <div 
+                  key={idx}
+                  className="flex items-center gap-4 p-4 rounded-xl transition-smooth hover-lift bg-darkBg border border-transparent hover:border-purple-500"
+                >
+                  <div 
+                    className="flex items-center justify-center rounded-lg p-3"
+                    style={{
+                      backgroundColor: 'rgba(139, 92, 255, 0.1)',
+                      border: '1px solid rgba(139, 92, 255, 0.2)',
+                      color: feature.color
+                    }}
+                  >
+                    {feature.icon}
+                  </div>
+                  <span className="text-gray-300 font-medium">{feature.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div 
+            className="max-w-4xl mx-auto rounded-3xl p-12 text-center relative overflow-hidden"
             style={{
-              background: 'linear-gradient(135deg, #8B5CFF 0%, #5A2FE6 100%)',
-              color: '#FFFFFF',
-              fontWeight: '600',
-              letterSpacing: '-0.2px',
-              fontSize: '15px',
-              whiteSpace: 'nowrap'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, #7B4AFF 0%, #6C3EFF 100%)';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 8px 24px rgba(108, 62, 255, 0.5)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, #8B5CFF 0%, #5A2FE6 100%)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
+              background: 'linear-gradient(135deg, rgba(139, 92, 255, 0.2) 0%, rgba(90, 47, 230, 0.2) 100%)',
+              border: '2px solid rgba(139, 92, 255, 0.3)',
             }}
           >
-            <IoDownloadOutline size={20} />
-            <span>Download Now</span>
-          </a>
+            <div className="relative z-10">
+              <div style={{ color: '#8B5CFF' }} className="flex justify-center mb-6">
+                <IoRocket size={64} />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-offWhite mb-6">
+                Start Trading Smarter Today
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Experience the power of AI-driven stock analysis. 
+                Download now and get full access—completely free during early access.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="https://play.google.com/store"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-purple-glow inline-flex items-center justify-center gap-3 text-lg px-10 py-5"
+                >
+                  <IoDownloadOutline size={28} />
+                  <span>Download Free Now</span>
+                </a>
+              </div>
+              <p className="text-gray-400 text-sm mt-6">
+                ✓ No credit card required  ✓ Free early access  ✓ All features unlocked
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

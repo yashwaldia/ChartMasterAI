@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { IoDownloadOutline } from 'react-icons/io5';
 import logo from '../assets/logo.png';
 
+
 export default function Navbar() {
   return (
     <nav 
@@ -32,11 +33,13 @@ export default function Navbar() {
             </span>
           </Link>
 
+
           {/* Navigation Links */}
           <div className="flex items-center space-x-6">
             {[
               { to: '/', label: 'Home' },
               { to: '/about', label: 'About' },
+              { to: '/upgrade', label: 'Upgrade' },
               { to: '/privacy', label: 'Privacy' },
               { to: '/terms', label: 'Terms' },
             ].map((link) => (

@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import Upgrade from './pages/Upgrade';
+
 
 function App() {
   return (
@@ -21,11 +23,13 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/upgrade" element={<Upgrade />} />
         </Routes>
         <Footer />
       </div>
     </BrowserRouter>
   );
 }
+
 
 export default App;
