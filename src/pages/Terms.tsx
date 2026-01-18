@@ -5,7 +5,6 @@ import {
   IoWarning,
   IoShieldCheckmark,
   IoPeople,
-  IoHammer,
   IoLockClosed,
   IoCash,
   IoSparkles,
@@ -15,11 +14,15 @@ import {
   IoGlobeOutline,
   IoMailOutline,
   IoReader,
-  IoBan
+  IoBan,
+  IoMenu,
+  IoChevronDown,
+  IoChevronUp
 } from 'react-icons/io5';
 
 export default function Terms() {
   const [activeSection, setActiveSection] = useState('');
+  const [isTocOpen, setIsTocOpen] = useState(false);
 
   const sections = [
     { id: 'acceptance', title: 'Acceptance of Terms', icon: IoCheckmarkCircle },
@@ -71,42 +74,81 @@ export default function Terms() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 100;
+      const offset = 80;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
         top: elementPosition - offset,
         behavior: 'smooth'
       });
+      setIsTocOpen(false);
     }
   };
 
   return (
-    <div className="relative py-20">
-      <div className="container mx-auto px-4">
+    <div className="relative py-12 sm:py-16 md:py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 shadow-purple-glow" style={{ background: 'linear-gradient(135deg, #8B5CFF 0%, #5A2FE6 100%)' }}>
-              <IoDocumentText size={40} color="#F8F9FA" />
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-xl sm:rounded-2xl mb-4 sm:mb-5 md:mb-6 shadow-purple-glow" style={{ background: 'linear-gradient(135deg, #8B5CFF 0%, #5A2FE6 100%)' }}>
+              <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10">
+                <IoDocumentText size="100%" color="#F8F9FA" />
+              </div>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-offWhite mb-4" style={{ letterSpacing: '-0.02em' }}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-offWhite mb-3 sm:mb-4 px-4" style={{ letterSpacing: '-0.02em' }}>
               Terms of Service
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto px-4">
               Please read these terms carefully before using ChartMasterAI
             </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-gray-400">
+            <div className="mt-4 sm:mt-5 md:mt-6 flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400 px-4">
               <span><strong className="text-offWhite">Effective Date:</strong> December 7, 2025</span>
-              <span className="text-purple-500">•</span>
+              <span className="hidden sm:inline text-purple-500">•</span>
               <span><strong className="text-offWhite">Last Updated:</strong> {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Sidebar Navigation - Sticky */}
-            <aside className="lg:col-span-1">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 md:gap-8">
+            {/* Mobile Table of Contents Button */}
+            <div className="lg:hidden">
+              <button
+                onClick={() => setIsTocOpen(!isTocOpen)}
+                className="w-full glass-card p-4 rounded-xl flex items-center justify-between text-offWhite font-semibold hover:bg-purple-500/10 transition-all"
+              >
+                <div className="flex items-center gap-2">
+                  <IoMenu size={20} />
+                  <span>Table of Contents</span>
+                </div>
+                {isTocOpen ? <IoChevronUp size={20} /> : <IoChevronDown size={20} />}
+              </button>
+
+              {/* Mobile TOC Dropdown */}
+              {isTocOpen && (
+                <div className="glass-card p-4 rounded-xl mt-2 max-h-96 overflow-y-auto">
+                  <nav className="space-y-1">
+                    {sections.map((section) => (
+                      <button
+                        key={section.id}
+                        onClick={() => scrollToSection(section.id)}
+                        className={`w-full text-left px-3 py-2.5 rounded-lg transition-all duration-200 flex items-center gap-2 text-sm ${
+                          activeSection === section.id
+                            ? 'bg-purple-500/20 text-purple-400 font-semibold'
+                            : 'text-gray-400 hover:text-offWhite hover:bg-purple-500/10'
+                        }`}
+                      >
+                        <section.icon size={16} />
+                        <span className="line-clamp-1">{section.title}</span>
+                      </button>
+                    ))}
+                  </nav>
+                </div>
+              )}
+            </div>
+
+            {/* Desktop Sidebar Navigation - Sticky */}
+            <aside className="hidden lg:block lg:col-span-1">
               <div className="sticky top-24">
-                <div className="glass-card p-6 rounded-2xl">
+                <div className="glass-card p-5 xl:p-6 rounded-2xl">
                   <h3 className="text-offWhite font-bold mb-4 text-sm uppercase tracking-wide">
                     Table of Contents
                   </h3>
@@ -132,10 +174,10 @@ export default function Terms() {
 
             {/* Main Content */}
             <main className="lg:col-span-3">
-              <div className="space-y-8">
+              <div className="space-y-4 sm:space-y-6 md:space-y-8">
                 {/* Introduction */}
-                <div className="glass-card p-8 rounded-2xl">
-                  <p className="text-gray-300 leading-relaxed">
+                <div className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     These Terms of Service ("Terms") govern your use of the ChartMasterAI mobile application 
                     ("the App," "we," "our," or "us"). By downloading, installing, or using the App, you agree 
                     to be bound by these Terms. If you do not agree, please do not use the App.
@@ -143,14 +185,16 @@ export default function Terms() {
                 </div>
 
                 {/* Section 1 - Acceptance */}
-                <section id="acceptance" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoCheckmarkCircle size={24} color="#8B5CFF" />
+                <section id="acceptance" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoCheckmarkCircle size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">1. Acceptance of Terms</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">1. Acceptance of Terms</h2>
                   </div>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     By accessing and using ChartMasterAI, you acknowledge that you have read, understood, and 
                     agree to be bound by these Terms and our Privacy Policy. These Terms constitute a legally 
                     binding agreement between you and ChartMasterAI.
@@ -158,50 +202,54 @@ export default function Terms() {
                 </section>
 
                 {/* Section 2 - Description */}
-                <section id="description" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoDocumentText size={24} color="#8B5CFF" />
+                <section id="description" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoDocumentText size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">2. Description of Service</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">2. Description of Service</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>ChartMasterAI provides the following services:</p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li><strong className="text-offWhite">AI-powered stock chart analysis:</strong> Upload stock charts for instant AI interpretation</li>
                       <li><strong className="text-offWhite">Market insights:</strong> Receive analysis on stocks, global markets, and trading patterns</li>
                       <li><strong className="text-offWhite">Educational content:</strong> Learn about technical analysis and market trends</li>
                       <li><strong className="text-offWhite">Real-time analysis:</strong> Get immediate responses powered by Google Gemini AI</li>
                       <li><strong className="text-offWhite">Advertising:</strong> The app may display advertisements via Google AdMob</li>
                     </ul>
-                    <p className="text-sm italic text-gray-400 mt-4">
+                    <p className="text-xs sm:text-sm italic text-gray-400 mt-3 sm:mt-4">
                       The service is provided "as is" for informational and educational purposes only.
                     </p>
                   </div>
                 </section>
 
                 {/* Section 3 - NOT FINANCIAL ADVICE - CRITICAL */}
-                <section id="not-advice" className="rounded-2xl p-8" style={{ background: 'linear-gradient(135deg, rgba(255, 193, 7, 0.2) 0%, rgba(255, 152, 0, 0.2) 100%)', border: '2px solid rgba(255, 193, 7, 0.5)' }}>
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="p-3 rounded-xl" style={{ background: 'rgba(255, 193, 7, 0.3)' }}>
-                      <IoWarning size={32} color="#FFC107" />
+                <section id="not-advice" className="rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8" style={{ background: 'linear-gradient(135deg, rgba(255, 193, 7, 0.2) 0%, rgba(255, 152, 0, 0.2) 100%)', border: '2px solid rgba(255, 193, 7, 0.5)' }}>
+                  <div className="flex items-start gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <span className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: 'rgba(255, 193, 7, 0.3)' }}>
+                      <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8">
+                        <IoWarning size="100%" color="#FFC107" />
+                      </div>
                     </span>
-                    <h2 className="text-3xl font-bold" style={{ color: '#FFC107' }}>
+                    <h2 className="text-lg sm:text-2xl md:text-3xl font-bold" style={{ color: '#FFC107' }}>
                       ⚠️ 3. NOT FINANCIAL ADVICE - CRITICAL DISCLAIMER
                     </h2>
                   </div>
                   
-                  <p className="mb-4 leading-relaxed font-semibold text-lg" style={{ color: '#FFE082' }}>
+                  <p className="mb-3 sm:mb-4 leading-relaxed font-semibold text-base sm:text-lg" style={{ color: '#FFE082' }}>
                     PLEASE READ THIS SECTION CAREFULLY:
                   </p>
 
-                  <div className="space-y-4" style={{ color: '#FFF3E0' }}>
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base" style={{ color: '#FFF3E0' }}>
                     <p className="leading-relaxed">
                       <strong>ChartMasterAI DOES NOT provide financial, investment, or trading advice.</strong> 
                       All analysis, predictions, insights, and recommendations generated by the App are:
                     </p>
                     
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li>Generated by artificial intelligence (Google Gemini AI)</li>
                       <li>For <strong>educational and informational purposes only</strong></li>
                       <li><strong>NOT</strong> personalized financial advice</li>
@@ -209,11 +257,11 @@ export default function Terms() {
                       <li>Subject to errors, misinterpretations, or technical limitations</li>
                     </ul>
 
-                    <p className="leading-relaxed font-semibold mt-4">
+                    <p className="leading-relaxed font-semibold mt-3 sm:mt-4">
                       You acknowledge and agree that:
                     </p>
 
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li><strong>You use the App entirely at your own risk</strong></li>
                       <li>You should <strong>never</strong> rely solely on AI-generated analysis for investment decisions</li>
                       <li>You must <strong>always consult with a qualified, licensed financial advisor</strong> before making investment decisions</li>
@@ -226,14 +274,16 @@ export default function Terms() {
                 </section>
 
                 {/* Section 4 - Eligibility */}
-                <section id="eligibility" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoPeople size={24} color="#8B5CFF" />
+                <section id="eligibility" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoPeople size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">4. Eligibility</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">4. Eligibility</h2>
                   </div>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     You must be at least <strong className="text-offWhite">18 years of age</strong> to use ChartMasterAI. By using the App, 
                     you represent and warrant that you meet this age requirement and have the legal capacity to 
                     enter into these Terms. The App is not intended for children under 13 years of age.
@@ -241,16 +291,18 @@ export default function Terms() {
                 </section>
 
                 {/* Section 5 - User Responsibilities */}
-                <section id="responsibilities" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoShieldCheckmark size={24} color="#8B5CFF" />
+                <section id="responsibilities" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoShieldCheckmark size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">5. User Responsibilities</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">5. User Responsibilities</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>When using ChartMasterAI, you agree to:</p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li><strong className="text-offWhite">Use the App legally:</strong> Comply with all applicable local, state, national, and international laws</li>
                       <li><strong className="text-offWhite">Upload appropriate content:</strong> Only upload stock charts and legitimate market-related images</li>
                       <li><strong className="text-offWhite">Respect intellectual property:</strong> Not upload copyrighted or proprietary content without permission</li>
@@ -262,16 +314,18 @@ export default function Terms() {
                 </section>
 
                 {/* Section 6 - Prohibited Activities */}
-                <section id="prohibited" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoBan size={24} color="#8B5CFF" />
+                <section id="prohibited" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoBan size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">6. Prohibited Activities</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">6. Prohibited Activities</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>You may NOT:</p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li>Reverse engineer, decompile, or disassemble the App</li>
                       <li>Attempt to gain unauthorized access to our systems or other users' data</li>
                       <li>Use automated scripts, bots, or scrapers to access the App</li>
@@ -285,20 +339,22 @@ export default function Terms() {
                 </section>
 
                 {/* Section 7 - Intellectual Property */}
-                <section id="intellectual" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoLockClosed size={24} color="#8B5CFF" />
+                <section id="intellectual" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoLockClosed size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">7. Intellectual Property Rights</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">7. Intellectual Property Rights</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>
                       All content, features, design, code, and functionality of ChartMasterAI (including but not limited 
                       to the app interface, logo, graphics, and AI analysis algorithms) are owned by ChartMasterAI 
                       developers and are protected by:
                     </p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li>Copyright laws</li>
                       <li>Trademark laws</li>
                       <li>Intellectual property laws</li>
@@ -311,16 +367,18 @@ export default function Terms() {
                 </section>
 
                 {/* Section 7b - Third-Party Services */}
-                <section id="third-party" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoGlobeOutline size={24} color="#8B5CFF" />
+                <section id="third-party" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoGlobeOutline size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">7b. Third-Party Services and Advertising</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">7b. Third-Party Services and Advertising</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>ChartMasterAI uses third-party services, including:</p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li><strong className="text-offWhite">Google Gemini AI:</strong> For AI-powered chart analysis</li>
                       <li><strong className="text-offWhite">Google AdMob:</strong> For displaying advertisements</li>
                       <li><strong className="text-offWhite">Expo:</strong> For app framework and diagnostics</li>
@@ -337,24 +395,26 @@ export default function Terms() {
                 </section>
 
                 {/* Section 8 - Pricing */}
-                <section id="pricing" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoCash size={24} color="#8B5CFF" />
+                <section id="pricing" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoCash size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">8. Pricing and Payments</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">8. Pricing and Payments</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>
                       ChartMasterAI is currently <strong className="text-offWhite">free to use</strong>. However, we reserve the right to:
                     </p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li>Introduce paid features or premium subscriptions in the future</li>
                       <li>Limit usage for free users (e.g., daily analysis limits)</li>
                       <li>Require payment for certain advanced features</li>
                     </ul>
                     <p>If paid subscriptions are introduced:</p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li>Pricing will be clearly displayed before purchase</li>
                       <li>Payments will be processed through Google Play Store or Apple App Store</li>
                       <li>Subscription fees are generally <strong className="text-offWhite">non-refundable</strong> unless required by law</li>
@@ -365,19 +425,21 @@ export default function Terms() {
                 </section>
 
                 {/* Section 9 - AI Disclaimer */}
-                <section id="ai-disclaimer" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoSparkles size={24} color="#8B5CFF" />
+                <section id="ai-disclaimer" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoSparkles size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">9. AI-Generated Content Disclaimer</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">9. AI-Generated Content Disclaimer</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>
                       All analysis provided by ChartMasterAI is generated by artificial intelligence (Google Gemini AI). 
                       You acknowledge that:
                     </p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li><strong className="text-offWhite">AI is not infallible:</strong> AI can make errors, misinterpret data, or provide inaccurate analysis</li>
                       <li><strong className="text-offWhite">No guarantees:</strong> We do not guarantee the accuracy, completeness, or reliability of AI-generated content</li>
                       <li><strong className="text-offWhite">Market volatility:</strong> Stock markets are unpredictable, and AI predictions may not account for sudden events</li>
@@ -388,14 +450,16 @@ export default function Terms() {
                 </section>
 
                 {/* Section 10 - Limitation of Liability */}
-                <section id="liability" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoAlertCircle size={24} color="#8B5CFF" />
+                <section id="liability" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoAlertCircle size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">10. Limitation of Liability</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">10. Limitation of Liability</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p className="font-semibold text-warning">
                       IMPORTANT: PLEASE READ THIS SECTION CAREFULLY.
                     </p>
@@ -403,7 +467,7 @@ export default function Terms() {
                       To the maximum extent permitted by law, ChartMasterAI and its developers, owners, employees, 
                       and affiliates shall <strong className="text-offWhite">NOT</strong> be liable for any:
                     </p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li><strong className="text-offWhite">Financial losses:</strong> Including losses from trading, investments, or financial decisions based on the App</li>
                       <li><strong className="text-offWhite">Direct damages:</strong> Any direct damages resulting from use or inability to use the App</li>
                       <li><strong className="text-offWhite">Indirect damages:</strong> Lost profits, lost data, business interruption, or consequential damages</li>
@@ -421,16 +485,18 @@ export default function Terms() {
                 </section>
 
                 {/* Section 11 - Warranties */}
-                <section id="warranties" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoAlertCircle size={24} color="#8B5CFF" />
+                <section id="warranties" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoAlertCircle size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">11. Disclaimer of Warranties</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">11. Disclaimer of Warranties</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>We make <strong className="text-offWhite">no warranties or representations</strong> about:</p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li>The accuracy, reliability, or completeness of the App's content or analysis</li>
                       <li>The App's availability, uptime, or uninterrupted operation</li>
                       <li>The App being free from errors, bugs, viruses, or security vulnerabilities</li>
@@ -441,19 +507,21 @@ export default function Terms() {
                 </section>
 
                 {/* Section 12 - Indemnification */}
-                <section id="indemnification" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoShieldCheckmark size={24} color="#8B5CFF" />
+                <section id="indemnification" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoShieldCheckmark size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">12. Indemnification</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">12. Indemnification</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>
                       You agree to indemnify, defend, and hold harmless ChartMasterAI and its developers from any 
                       claims, damages, losses, liabilities, and expenses (including legal fees) arising from:
                     </p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li>Your use or misuse of the App</li>
                       <li>Your violation of these Terms</li>
                       <li>Your violation of any laws or regulations</li>
@@ -464,19 +532,21 @@ export default function Terms() {
                 </section>
 
                 {/* Section 13 - Termination */}
-                <section id="termination" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoClose size={24} color="#8B5CFF" />
+                <section id="termination" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoClose size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">13. Termination</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">13. Termination</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>
                       We reserve the right to suspend, restrict, or terminate your access to the App at any time, 
                       with or without notice, for any reason, including but not limited to:
                     </p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li>Violation of these Terms</li>
                       <li>Fraudulent or illegal activity</li>
                       <li>Abuse or misuse of the App</li>
@@ -488,16 +558,18 @@ export default function Terms() {
                 </section>
 
                 {/* Section 14 - Changes */}
-                <section id="changes" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoTime size={24} color="#8B5CFF" />
+                <section id="changes" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoTime size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">14. Changes to the App and Terms</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">14. Changes to the App and Terms</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>We reserve the right to:</p>
-                    <ul className="space-y-2 ml-6 list-disc">
+                    <ul className="space-y-2 ml-4 sm:ml-6 list-disc">
                       <li><strong className="text-offWhite">Modify these Terms:</strong> We may update these Terms at any time by posting the revised version</li>
                       <li><strong className="text-offWhite">Update the App:</strong> Add, remove, or change features, functionality, or design</li>
                       <li><strong className="text-offWhite">Discontinue the App:</strong> We may shut down the App permanently at any time</li>
@@ -507,14 +579,16 @@ export default function Terms() {
                 </section>
 
                 {/* Section 15 - Governing Law */}
-                <section id="governing" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoGlobeOutline size={24} color="#8B5CFF" />
+                <section id="governing" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoGlobeOutline size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">15. Governing Law and Jurisdiction</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">15. Governing Law and Jurisdiction</h2>
                   </div>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     These Terms shall be governed by and construed in accordance with the laws of <strong className="text-offWhite">India</strong>, 
                     without regard to its conflict of law principles. Any disputes arising from these Terms or your 
                     use of the App shall be subject to the exclusive jurisdiction of the courts located in India.
@@ -522,45 +596,51 @@ export default function Terms() {
                 </section>
 
                 {/* Section 16 - Severability */}
-                <section id="severability" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoReader size={24} color="#8B5CFF" />
+                <section id="severability" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoReader size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">16. Severability</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">16. Severability</h2>
                   </div>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     If any provision of these Terms is found to be invalid, illegal, or unenforceable, the remaining 
                     provisions shall continue in full force and effect.
                   </p>
                 </section>
 
                 {/* Section 17 - Entire Agreement */}
-                <section id="entire" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoDocumentText size={24} color="#8B5CFF" />
+                <section id="entire" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoDocumentText size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">17. Entire Agreement</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">17. Entire Agreement</h2>
                   </div>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     These Terms, together with our Privacy Policy, constitute the entire agreement between you 
                     and ChartMasterAI regarding your use of the App, and supersede any prior agreements or understandings.
                   </p>
                 </section>
 
                 {/* Section 18 - Contact */}
-                <section id="contact" className="glass-card p-8 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-purple-dark">
-                      <IoMailOutline size={24} color="#8B5CFF" />
+                <section id="contact" className="glass-card p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                    <div className="p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-purple-dark flex-shrink-0">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6">
+                        <IoMailOutline size="100%" color="#8B5CFF" />
+                      </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-offWhite">18. Contact Us</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-offWhite">18. Contact Us</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
                     <p>If you have questions, concerns, or feedback about these Terms of Service, please contact us:</p>
-                    <div className="rounded-xl p-6" style={{ background: 'rgba(139, 92, 255, 0.1)', border: '1.5px solid rgba(139, 92, 255, 0.3)' }}>
-                      <p className="mb-2">
+                    <div className="rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6" style={{ background: 'rgba(139, 92, 255, 0.1)', border: '1.5px solid rgba(139, 92, 255, 0.3)' }}>
+                      <p className="mb-2 break-all">
                         <strong className="text-offWhite">Email:</strong>{' '}
                         <a 
                           href="mailto:narisnarender@gmail.com"
@@ -569,7 +649,7 @@ export default function Terms() {
                           narisnarender@gmail.com
                         </a>
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xs sm:text-sm">
                         <strong className="text-offWhite">Response Time:</strong> We aim to respond within 48 hours
                       </p>
                     </div>
@@ -577,36 +657,34 @@ export default function Terms() {
                 </section>
 
                 {/* Acknowledgment Box */}
-                <div className="rounded-2xl p-8" style={{ background: 'linear-gradient(135deg, rgba(139, 92, 255, 0.2) 0%, rgba(90, 47, 230, 0.2) 100%)', border: '2px solid rgba(139, 92, 255, 0.4)' }}>
-                  <h3 className="font-bold text-offWhite mb-4 text-xl flex items-center gap-2">
-                    <span>
-                      <IoCheckmarkCircle size={24} color="#10B981" />
-                    </span>
-                    By Using ChartMasterAI, You Acknowledge That:
+                <div className="rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8" style={{ background: 'linear-gradient(135deg, rgba(139, 92, 255, 0.2) 0%, rgba(90, 47, 230, 0.2) 100%)', border: '2px solid rgba(139, 92, 255, 0.4)' }}>
+                  <h3 className="font-bold text-offWhite mb-3 sm:mb-4 text-lg sm:text-xl flex items-center gap-2">
+                    <IoCheckmarkCircle size={24} color="#10B981" />
+                    <span>By Using ChartMasterAI, You Acknowledge That:</span>
                   </h3>
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-sm sm:text-base text-gray-300">
                     <li className="flex items-start gap-2">
-                      <span>✅</span>
+                      <span className="flex-shrink-0">✅</span>
                       <span>You have read and understood these Terms of Service</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span>✅</span>
+                      <span className="flex-shrink-0">✅</span>
                       <span>You agree to be bound by these Terms</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span>✅</span>
+                      <span className="flex-shrink-0">✅</span>
                       <span>You understand that ChartMasterAI does NOT provide financial advice</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span>✅</span>
+                      <span className="flex-shrink-0">✅</span>
                       <span>You use the App entirely at your own risk</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span>✅</span>
+                      <span className="flex-shrink-0">✅</span>
                       <span>You are solely responsible for your investment decisions</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span>✅</span>
+                      <span className="flex-shrink-0">✅</span>
                       <span>You will not hold ChartMasterAI liable for any financial losses</span>
                     </li>
                   </ul>

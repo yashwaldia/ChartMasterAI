@@ -38,31 +38,31 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section - Split Layout */}
-      <section className="relative min-h-[90vh] flex items-center">
+      <section className="relative min-h-[70vh] sm:min-h-[80vh] md:min-h-[90vh] flex items-center">
         {/* Background Gradient Mesh */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div 
-            className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl opacity-20"
+            className="absolute top-0 right-0 w-[300px] sm:w-[400px] md:w-[600px] h-[300px] sm:h-[400px] md:h-[600px] rounded-full blur-3xl opacity-20"
             style={{
               background: 'radial-gradient(circle, #8B5CFF 0%, transparent 70%)',
             }}
           />
           <div 
-            className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-3xl opacity-15"
+            className="absolute bottom-0 left-0 w-[250px] sm:w-[350px] md:w-[500px] h-[250px] sm:h-[350px] md:h-[500px] rounded-full blur-3xl opacity-15"
             style={{
               background: 'radial-gradient(circle, #5A2FE6 0%, transparent 70%)',
             }}
           />
         </div>
 
-        <div className="container mx-auto px-4 py-16 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-8 animate-fade-in-up">
-              {/* Main Headline - NO LOGO HERE */}
+            <div className="space-y-6 sm:space-y-8 animate-fade-in-up text-center lg:text-left">
+              {/* Main Headline */}
               <div>
                 <h1 
-                  className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-5 md:mb-6 leading-tight"
                   style={{ letterSpacing: '-0.02em' }}
                 >
                   <span className="text-offWhite">Trade Smarter</span>
@@ -72,24 +72,24 @@ export default function Home() {
                   <br />
                   <span className="text-offWhite">Insights</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-xl leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                   Get instant, intelligent stock analysis powered by advanced AI. 
                   Make confident trading decisions in seconds, not hours.
                 </p>
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                 <a
                   href="https://play.google.com/store"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-purple-glow inline-flex items-center justify-center gap-3 text-lg px-8 py-4 group"
+                  className="btn-purple-glow inline-flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 group"
                 >
-                  <IoDownloadOutline size={24} />
+                  <IoDownloadOutline size={20} />
                   <span>Download Free</span>
                   <span className="transition-transform group-hover:translate-x-1">
-                    <IoChevronForward size={20} />
+                    <IoChevronForward size={18} />
                   </span>
                 </a>
                 <button
@@ -99,53 +99,53 @@ export default function Home() {
                       featuresSection.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="btn-outline-purple inline-flex items-center justify-center gap-2 text-lg px-8 py-4"
+                  className="btn-outline-purple inline-flex items-center justify-center gap-2 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
                 >
-                  <IoSparkles size={20} />
+                  <IoSparkles size={18} />
                   <span>Explore Features</span>
                 </button>
               </div>
 
-              {/* Trust Indicators - GENUINE DATA ONLY */}
-              <div className="flex flex-wrap items-center gap-6 pt-4">
+              {/* Trust Indicators */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 md:gap-6 pt-2 sm:pt-4">
                 <div className="flex items-center gap-2">
-                  <div style={{ color: '#8B5CFF' }}>
-                    <IoSparkles size={24} />
+                  <div className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: '#8B5CFF' }}>
+                    <IoSparkles size="100%" />
                   </div>
-                  <span className="text-gray-400 font-semibold">Powered by Gemini AI</span>
+                  <span className="text-xs sm:text-sm md:text-base text-gray-400 font-semibold">Powered by Gemini AI</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div style={{ color: '#10B981' }}>
-                    <IoShieldCheckmark size={24} />
+                  <div className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: '#10B981' }}>
+                    <IoShieldCheckmark size="100%" />
                   </div>
-                  <span className="text-gray-400 font-semibold">100% Free Access</span>
+                  <span className="text-xs sm:text-sm md:text-base text-gray-400 font-semibold">100% Free Access</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div style={{ color: '#F59E0B' }}>
-                    <IoTimeOutline size={24} />
+                  <div className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: '#F59E0B' }}>
+                    <IoTimeOutline size="100%" />
                   </div>
-                  <span className="text-gray-400 font-semibold">Real-Time Data</span>
+                  <span className="text-xs sm:text-sm md:text-base text-gray-400 font-semibold">Real-Time Data</span>
                 </div>
               </div>
             </div>
 
             {/* Right - App Preview */}
-            <div className="relative animate-fade-in-up animation-delay-400">
+            <div className="relative animate-fade-in-up animation-delay-400 mt-8 lg:mt-0">
               <div className="relative">
                 {/* Phone Mockup with Screenshot */}
                 <div 
-                  className="relative rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-md"
+                  className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-sm sm:max-w-md"
                   style={{
                     background: 'linear-gradient(135deg, #13151F 0%, #1A1B2E 100%)',
                     border: '2px solid rgba(139, 92, 255, 0.3)',
                   }}
                 >
                   {/* Carousel */}
-                  <div className="relative h-[500px] sm:h-[600px]">
+                  <div className="relative h-[400px] sm:h-[500px] md:h-[600px]">
                     {images.map((img, idx) => (
                       <div
                         key={idx}
-                        className="absolute inset-0 transition-all duration-700 flex items-center justify-center p-4"
+                        className="absolute inset-0 transition-all duration-700 flex items-center justify-center p-3 sm:p-4"
                         style={{
                           opacity: currentSlide === idx ? 1 : 0,
                           transform: currentSlide === idx ? 'scale(1)' : 'scale(0.95)',
@@ -161,14 +161,14 @@ export default function Home() {
                   </div>
 
                   {/* Carousel Dots */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                  <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2">
                     {images.map((_, idx) => (
                       <button
                         key={idx}
                         onClick={() => setCurrentSlide(idx)}
                         className="transition-all duration-300"
                         style={{
-                          width: currentSlide === idx ? '24px' : '8px',
+                          width: currentSlide === idx ? '20px' : '8px',
                           height: '8px',
                           borderRadius: '4px',
                           backgroundColor: currentSlide === idx ? '#8B5CFF' : 'rgba(255,255,255,0.3)',
@@ -179,15 +179,15 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Floating Feature Cards */}
-                <div className="hidden lg:block">
+                {/* Floating Feature Cards - Desktop Only */}
+                <div className="hidden xl:block">
                   <div 
                     className="absolute -left-8 top-20 glass-card p-4 animate-float"
                     style={{ width: '200px' }}
                   >
                     <div className="flex items-center gap-3">
-                      <div style={{ color: '#10B981' }}>
-                        <IoCheckmarkCircle size={24} />
+                      <div className="w-6 h-6" style={{ color: '#10B981' }}>
+                        <IoCheckmarkCircle size="100%" />
                       </div>
                       <div>
                         <p className="text-offWhite font-semibold text-sm">Buy Signal</p>
@@ -201,8 +201,8 @@ export default function Home() {
                     style={{ width: '180px' }}
                   >
                     <div className="flex items-center gap-3">
-                      <div style={{ color: '#8B5CFF' }}>
-                        <IoAnalytics size={24} />
+                      <div className="w-6 h-6" style={{ color: '#8B5CFF' }}>
+                        <IoAnalytics size="100%" />
                       </div>
                       <div>
                         <p className="text-offWhite font-semibold text-sm">AI Analysis</p>
@@ -217,121 +217,135 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section - GENUINE METRICS ONLY */}
-      <section className="py-16 border-y border-borderDark bg-darkBgSecondary">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {/* Stats Section */}
+      <section className="py-10 sm:py-12 md:py-16 border-y border-borderDark bg-darkBgSecondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             <div className="text-center animate-fade-in-up">
-              <div className="flex justify-center mb-3" style={{ color: '#8B5CFF' }}>
-                <IoGlobeOutline size={32} />
+              <div className="flex justify-center mb-2 sm:mb-3" style={{ color: '#8B5CFF' }}>
+                <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8">
+                  <IoGlobeOutline size="100%" />
+                </div>
               </div>
-              <div className="text-4xl font-bold text-offWhite mb-2">50+</div>
-              <div className="text-gray-400 font-medium">Markets Covered</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-offWhite mb-1 sm:mb-2">50+</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-400 font-medium">Markets Covered</div>
             </div>
             
             <div className="text-center animate-fade-in-up animation-delay-200">
-              <div className="flex justify-center mb-3" style={{ color: '#10B981' }}>
-                <IoSparkles size={32} />
+              <div className="flex justify-center mb-2 sm:mb-3" style={{ color: '#10B981' }}>
+                <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8">
+                  <IoSparkles size="100%" />
+                </div>
               </div>
-              <div className="text-4xl font-bold text-offWhite mb-2">AI</div>
-              <div className="text-gray-400 font-medium">Powered Analysis</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-offWhite mb-1 sm:mb-2">AI</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-400 font-medium">Powered Analysis</div>
             </div>
             
             <div className="text-center animate-fade-in-up animation-delay-400">
-              <div className="flex justify-center mb-3" style={{ color: '#F59E0B' }}>
-                <IoTimeOutline size={32} />
+              <div className="flex justify-center mb-2 sm:mb-3" style={{ color: '#F59E0B' }}>
+                <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8">
+                  <IoTimeOutline size="100%" />
+                </div>
               </div>
-              <div className="text-4xl font-bold text-offWhite mb-2">&lt;3s</div>
-              <div className="text-gray-400 font-medium">Response Time</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-offWhite mb-1 sm:mb-2">&lt;3s</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-400 font-medium">Response Time</div>
             </div>
             
             <div className="text-center animate-fade-in-up animation-delay-600">
-              <div className="flex justify-center mb-3" style={{ color: '#EC4899' }}>
-                <IoServerOutline size={32} />
+              <div className="flex justify-center mb-2 sm:mb-3" style={{ color: '#EC4899' }}>
+                <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8">
+                  <IoServerOutline size="100%" />
+                </div>
               </div>
-              <div className="text-4xl font-bold text-offWhite mb-2">24/7</div>
-              <div className="text-gray-400 font-medium">Live Data Feed</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-offWhite mb-1 sm:mb-2">24/7</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-400 font-medium">Live Data Feed</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Bento Grid Features Section */}
-      <section id="features" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-offWhite mb-4">
+      <section id="features" className="py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-offWhite mb-3 sm:mb-4 px-4">
               Everything You Need to Trade Smart
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto px-4">
               Powerful AI-driven features designed to give you the edge in the market
             </p>
           </div>
 
           {/* Bento Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Large Feature 1 */}
-            <div className="md:col-span-2 glass-card p-8 card-hover animate-fade-in-up">
+            <div className="md:col-span-2 lg:col-span-2 glass-card p-6 sm:p-8 card-hover animate-fade-in-up">
               <div className="flex flex-col h-full">
-                <div style={{ color: '#8B5CFF' }} className="mb-4">
-                  <IoSparkles size={48} />
+                <div style={{ color: '#8B5CFF' }} className="mb-3 sm:mb-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12">
+                    <IoSparkles size="100%" />
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-offWhite mb-3">
+                <h3 className="text-xl sm:text-2xl font-bold text-offWhite mb-2 sm:mb-3">
                   AI-Powered Analysis
                 </h3>
-                <p className="text-gray-400 mb-6 flex-grow">
+                <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6 flex-grow">
                   Advanced machine learning algorithms analyze millions of data points to provide 
                   you with actionable insights in real-time. Get buy/sell recommendations backed by AI.
                 </p>
-                <div className="flex items-center gap-2 text-purple-400 font-semibold">
-                </div>
               </div>
             </div>
 
             {/* Medium Feature */}
-            <div className="glass-card p-8 card-hover animate-fade-in-up animation-delay-200">
-              <div style={{ color: '#10B981' }} className="mb-4">
-                <IoTrendingUp size={40} />
+            <div className="glass-card p-6 sm:p-8 card-hover animate-fade-in-up animation-delay-200">
+              <div style={{ color: '#10B981' }} className="mb-3 sm:mb-4">
+                <div className="w-8 h-8 sm:w-10 sm:h-10">
+                  <IoTrendingUp size="100%" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-offWhite mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-offWhite mb-2 sm:mb-3">
                 Real-Time Data
               </h3>
-              <p className="text-gray-400">
+              <p className="text-sm sm:text-base text-gray-400">
                 Live market data from global exchanges updated every second.
               </p>
             </div>
 
             {/* Medium Feature */}
-            <div className="glass-card p-8 card-hover animate-fade-in-up animation-delay-400">
-              <div style={{ color: '#F59E0B' }} className="mb-4">
-                <IoNotifications size={40} />
+            <div className="glass-card p-6 sm:p-8 card-hover animate-fade-in-up animation-delay-400">
+              <div style={{ color: '#F59E0B' }} className="mb-3 sm:mb-4">
+                <div className="w-8 h-8 sm:w-10 sm:h-10">
+                  <IoNotifications size="100%" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-offWhite mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-offWhite mb-2 sm:mb-3">
                 Smart Alerts
               </h3>
-              <p className="text-gray-400">
+              <p className="text-sm sm:text-base text-gray-400">
                 Get notified instantly when AI detects trading opportunities.
               </p>
             </div>
 
             {/* Large Feature 2 */}
-            <div className="md:col-span-2 glass-card p-8 card-hover animate-fade-in-up animation-delay-600">
+            <div className="md:col-span-2 glass-card p-6 sm:p-8 card-hover animate-fade-in-up animation-delay-600">
               <div className="flex flex-col h-full">
-                <div style={{ color: '#8B5CFF' }} className="mb-4">
-                  <IoGlobeOutline size={48} />
+                <div style={{ color: '#8B5CFF' }} className="mb-3 sm:mb-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12">
+                    <IoGlobeOutline size="100%" />
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-offWhite mb-3">
+                <h3 className="text-xl sm:text-2xl font-bold text-offWhite mb-2 sm:mb-3">
                   Global Market Coverage
                 </h3>
-                <p className="text-gray-400 mb-6 flex-grow">
+                <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6 flex-grow">
                   Track stocks from India (NSE, BSE), US (NASDAQ, NYSE), Europe, and Asian markets. 
                   All in one powerful platform with unified analysis.
                 </p>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {['NSE', 'BSE', 'NASDAQ', 'NYSE'].map((market) => (
                     <span 
                       key={market}
-                      className="px-4 py-2 rounded-lg text-sm font-semibold"
+                      className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold"
                       style={{
                         background: 'rgba(139, 92, 255, 0.1)',
                         border: '1px solid rgba(139, 92, 255, 0.3)',
@@ -349,36 +363,38 @@ export default function Home() {
       </section>
 
       {/* Detailed Features List */}
-      <section className="py-20 bg-darkBgSecondary">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-16 md:py-20 bg-darkBgSecondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-offWhite mb-12 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-offWhite mb-8 sm:mb-10 md:mb-12 text-center">
               Built for Modern Traders
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {[
-                { icon: <IoBarChart size={24} />, text: 'Advanced chart patterns', color: '#8B5CFF' },
-                { icon: <IoFlash size={24} />, text: 'Lightning-fast performance', color: '#F59E0B' },
-                { icon: <IoPhonePortrait size={24} />, text: 'Beautiful, intuitive UI', color: '#10B981' },
-                { icon: <IoBriefcase size={24} />, text: 'Portfolio tracking & management', color: '#8B5CFF' },
-                { icon: <IoRocket size={24} />, text: 'Entry/exit suggestions', color: '#EC4899' },
-                { icon: <IoSchool size={24} />, text: 'Educational resources', color: '#3B82F6' },
+                { icon: IoBarChart, text: 'Advanced chart patterns', color: '#8B5CFF' },
+                { icon: IoFlash, text: 'Lightning-fast performance', color: '#F59E0B' },
+                { icon: IoPhonePortrait, text: 'Beautiful, intuitive UI', color: '#10B981' },
+                { icon: IoBriefcase, text: 'Portfolio tracking & management', color: '#8B5CFF' },
+                { icon: IoRocket, text: 'Entry/exit suggestions', color: '#EC4899' },
+                { icon: IoSchool, text: 'Educational resources', color: '#3B82F6' },
               ].map((feature, idx) => (
                 <div 
                   key={idx}
-                  className="flex items-center gap-4 p-4 rounded-xl transition-smooth hover-lift bg-darkBg border border-transparent hover:border-purple-500"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl transition-smooth hover-lift bg-darkBg border border-transparent hover:border-purple-500"
                 >
                   <div 
-                    className="flex items-center justify-center rounded-lg p-3"
+                    className="flex items-center justify-center rounded-lg p-2 sm:p-3 flex-shrink-0"
                     style={{
                       backgroundColor: 'rgba(139, 92, 255, 0.1)',
                       border: '1px solid rgba(139, 92, 255, 0.2)',
                       color: feature.color
                     }}
                   >
-                    {feature.icon}
+                    <div className="w-5 h-5 sm:w-6 sm:h-6">
+                      <feature.icon size="100%" />
+                    </div>
                   </div>
-                  <span className="text-gray-300 font-medium">{feature.text}</span>
+                  <span className="text-sm sm:text-base text-gray-300 font-medium">{feature.text}</span>
                 </div>
               ))}
             </div>
@@ -387,38 +403,40 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div 
-            className="max-w-4xl mx-auto rounded-3xl p-12 text-center relative overflow-hidden"
+            className="max-w-4xl mx-auto rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 text-center relative overflow-hidden"
             style={{
               background: 'linear-gradient(135deg, rgba(139, 92, 255, 0.2) 0%, rgba(90, 47, 230, 0.2) 100%)',
               border: '2px solid rgba(139, 92, 255, 0.3)',
             }}
           >
             <div className="relative z-10">
-              <div style={{ color: '#8B5CFF' }} className="flex justify-center mb-6">
-                <IoRocket size={64} />
+              <div style={{ color: '#8B5CFF' }} className="flex justify-center mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16">
+                  <IoRocket size="100%" />
+                </div>
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold text-offWhite mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-offWhite mb-4 sm:mb-5 md:mb-6">
                 Start Trading Smarter Today
               </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
                 Experience the power of AI-driven stock analysis. 
                 Download now and get full access—completely free during early access.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <a
                   href="https://play.google.com/store"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-purple-glow inline-flex items-center justify-center gap-3 text-lg px-10 py-5"
+                  className="btn-purple-glow inline-flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5"
                 >
-                  <IoDownloadOutline size={28} />
+                  <IoDownloadOutline size={24} />
                   <span>Download Free Now</span>
                 </a>
               </div>
-              <p className="text-gray-400 text-sm mt-6">
+              <p className="text-gray-400 text-xs sm:text-sm mt-4 sm:mt-6 px-4">
                 ✓ No credit card required  ✓ Free early access  ✓ All features unlocked
               </p>
             </div>
